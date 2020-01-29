@@ -6,7 +6,7 @@ $dbinfo = parse_url(getenv('DATABASE_URL'));
 $dsn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1);
 
 $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
-var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION));
+var_dump('DB情報　：'.$pdo->getAttribute(PDO::ATTR_SERVER_VERSION));
 
 
 $conn = 'host='.$dbinfo['host'].' dbname='.substr($dbinfo['path'], 1).' user='.$dbinfo['user'].' password='.$dbinfo['pass'];
@@ -20,6 +20,6 @@ if (!$result) {
 }
 echo "<br />";
 $rows = pg_fetch_array($result, NULL, PGSQL_NUM);
-print($rows[0]);
-print($rows[1]);
+print('ユーザ名　：'.$rows[9]);
+print('名前　：'.$rows[1].$rows[2]);
 ?>
