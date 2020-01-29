@@ -19,5 +19,7 @@ if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
 }
 echo "<br />";
-print_r($result);
+$rows = pg_fetch_array($result, NULL, PGSQL_NUM);
+print($rows[0]);
+print($rows[1]);
 ?>
