@@ -18,5 +18,6 @@ $result = pg_query('SELECT * FROM users where email =\'hina3588@bbap.ll\'');
 if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
 }
-var_dump($result);
+echo "<br />";
+print_r($result);
 ?>
