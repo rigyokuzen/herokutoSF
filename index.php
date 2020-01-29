@@ -21,5 +21,6 @@ if (!$result) {
 echo "<br />";
 $rows = pg_fetch_array($result, NULL, PGSQL_NUM);
 print('ユーザ名　：'.$rows[9]);
+echo "<br />";
 print('名前　：'.$rows[1].$rows[2]);
 ?>
