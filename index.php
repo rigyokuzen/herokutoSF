@@ -9,7 +9,7 @@ $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
 var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION));
 
 
-$conn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1) . ';user=' .$dbinfo['user']. ';password=' .$dbinfo['pass'];
+$conn = 'host='.$dbinfo['host'].' dbname='.substr($dbinfo['path'], 1).' user='.$dbinfo['user'].' password='.$dbinfo['pass'];
 $link = pg_connect($conn);
 if (!$link) {
     die('接続失敗です。'.pg_last_error());
