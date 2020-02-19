@@ -18,7 +18,7 @@
         <script type='text/javascript'>
             var initESW = function(gslbBaseURL) {
                 embedded_svc.settings.displayHelpButton = true; //または false
-                embedded_svc.settings.language = 'ja'; //たとえば、「en」または「en-US」を入力します
+                embedded_svc.settings.language = ''; //たとえば、「en」または「en-US」を入力します
         
                 //embedded_svc.settings.defaultMinimizedText = '...'; //(エキスパートとチャットにデフォルト設定)
                 //embedded_svc.settings.disabledMinimizedText = '...'; //(エージェントがオフラインにデフォルト設定)
@@ -40,7 +40,7 @@
         
                 embedded_svc.init(
                     'https://cs117.salesforce.com',
-                    'https://herokuconnecttest0522.herokuapp.com',
+                    'https://proto-community-ff-sb.cs117.force.com/CallCenter',
                     gslbBaseURL,
                     '00D1m0000008lXu',
                     'FFChat',
@@ -50,7 +50,7 @@
                         buttonId: '5732w000000bub8',
                         baseLiveAgentURL: 'https://d.la2-c1cs-ukb.salesforceliveagent.com/chat',
                         eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1m000000000kEAA_1705c79bf6a',
-                        isOfflineSupportEnabled: true
+                        isOfflineSupportEnabled: false
                     }
                 );
             };
