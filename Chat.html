@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Access-Control-Allow-Origin" content="*">
+        <meta http-equiv="Access-Control-Allow-Methods" content="GET">
+        <meta http-equiv="Access-Control-Allow-Headers" content="*">
+        <title>Chat Window</title>
+    </head>
+    <body>
+        <style type='text/css'>
+            .embeddedServiceHelpButton .helpButton .uiButton {
+                background-color: #005290;
+                font-family: "Arial", sans-serif;
+            }
+            .embeddedServiceHelpButton .helpButton .uiButton:focus {
+                outline: 1px solid #005290;
+            }
+        </style>
+        
+        <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+        <script type='text/javascript'>
+            var initESW = function(gslbBaseURL) {
+                embedded_svc.settings.displayHelpButton = true; //または false
+                embedded_svc.settings.language = ''; //たとえば、「en」または「en-US」を入力します
+        
+                //embedded_svc.settings.defaultMinimizedText = '...'; //(エキスパートとチャットにデフォルト設定)
+                //embedded_svc.settings.disabledMinimizedText = '...'; //(エージェントがオフラインにデフォルト設定)
+        
+                //embedded_svc.settings.loadingText = ''; //(読み込み中にデフォルト設定)
+                //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(リリースのドメインを設定して、訪問者がチャットセッション中にサブドメインを移動できるようにします)
+        
+                // チャット の設定
+                //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+                    // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+                    // Returns a valid button ID.
+                //};
+                //embedded_svc.settings.prepopulatedPrechatFields = {}; //事前チャットフォームの項目の自動入力を設定
+                //embedded_svc.settings.fallbackRouting = []; //ボタン ID、ユーザ ID、または userId_buttonId の配列
+                //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(デフォルトは [お問い合わせ])
+        
+                embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+                embedded_svc.settings.entryFeature = 'LiveAgent';
+        
+                embedded_svc.init(
+                    'https://cs117.salesforce.com',
+                    'https://proto-community-ff-sb.cs117.force.com/CallCenter',
+                    gslbBaseURL,
+                    '00D1m0000008lXu',
+                    'FFChat',
+                    {
+                        baseLiveAgentContentURL: 'https://c.la2-c1cs-ukb.salesforceliveagent.com/content',
+                        deploymentId: '5722w000000buJf',
+                        buttonId: '5732w000000bub8',
+                        baseLiveAgentURL: 'https://d.la2-c1cs-ukb.salesforceliveagent.com/chat',
+                        eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1m000000000kEAA_1705c79bf6a',
+                        isOfflineSupportEnabled: false
+                    }
+                );
+            };
+        
+            if (!window.embedded_svc) {
+                var s = document.createElement('script');
+                s.setAttribute('src', 'https://cs117.salesforce.com/embeddedservice/5.0/esw.min.js');
+                s.onload = function() {
+                    initESW(null);
+                };
+                document.body.appendChild(s);
+            } else {
+                initESW('https://service.force.com');
+            }
+        </script>
+        <form action="https://cs117.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+        
+        <input type="hidden" name="orgid" value="00D1m0000008lXu"/>
+        <input type="hidden" name="retURL" value="https://www.google.com/"/>
+        <div style="width:1024px;">
+	        <table>
+	            <caption style="caption-side: top;">問い合わせフォーム</caption>
+		        <tr>
+		        	<th><label for="name">取引先責任者</label></th>
+		        	<td><input id="name" maxlength="80" name="name" size="20" type="text" /></td>
+		        </tr>
+		        
+		        <tr>
+		        	<th><label for="email">メール</label></th>
+		        	<td><input id="email" maxlength="80" name="email" size="20" type="text" /></td>
+		        </tr>
+		        
+		        <tr>
+		        	<th><label for="phone">電話</label></th>
+		        	<td><input id="phone" maxlength="40" name="phone" size="20" type="text" /></td>
+		        </tr>
+		        
+		        <tr>
+		        	<th><label for="subject">件名</label></th>
+		        	<td><input id="subject" maxlength="80" name="subject" size="20" type="text" /></td>
+		        </tr>
+		        
+		        <tr>
+		        	<th><label for="description">説明</label></th>
+		        	<td><textarea name="description"></textarea></td>
+		        </tr>
+		        <tr>
+			        <td colspan="2">
+	        			<div style="text-align:center;"><input type="submit" name="submit"/></div>
+	        		</td>
+        		</tr>
+		    </table>
+	    </div>
+		</form>
+    </body>
+</html>
